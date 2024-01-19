@@ -1,0 +1,1814 @@
+{
+  "metainfo" : {
+    "migrationVersions" : {
+      "gemBuilderVersion" : "v1"
+    },
+    "id" : "1",
+    "uri" : "pipelines/scd2_merge",
+    "language" : "python",
+    "fabricId" : "4678",
+    "frontEndLanguage" : "sql",
+    "mode" : "batch",
+    "udfs" : {
+      "language" : "python",
+      "udfs" : [ ],
+      "functionPackageName" : "nathanprophecy.io_team.test_unlinked.functions",
+      "sharedFunctionPackageNames" : [ "prophecy.spark_basic.functions", "prophecy.warehouse.functions" ]
+    },
+    "udafs" : {
+      "language" : "python",
+      "code" : ""
+    },
+    "configuration" : {
+      "common" : {
+        "type" : "record",
+        "fields" : [ {
+          "name" : "GenerateRandomIncrement",
+          "kind" : {
+            "type" : "record",
+            "fields" : [ {
+              "name" : "output_path",
+              "kind" : {
+                "type" : "string",
+                "value" : "dbfs:/data/tmp/customers_merge_python_1"
+              },
+              "optional" : false,
+              "isWorkflowNodeConfiguration" : false,
+              "isReferenced" : false
+            }, {
+              "name" : "merge_condition",
+              "kind" : {
+                "type" : "string",
+                "value" : "source.customer_id = target.customer_id"
+              },
+              "optional" : false,
+              "isWorkflowNodeConfiguration" : false,
+              "isReferenced" : false
+            } ]
+          },
+          "optional" : false,
+          "isWorkflowNodeConfiguration" : true,
+          "isReferenced" : false
+        } ]
+      },
+      "oldCommon" : {
+        "type" : "record",
+        "fields" : [ ]
+      },
+      "fabrics" : { },
+      "instances" : { },
+      "selected" : "default",
+      "nonEditable" : [ ],
+      "isSubscribedPipelineWithPipelineConfigs" : false
+    },
+    "sparkConf" : [ ],
+    "hadoopConf" : [ ],
+    "codeMode" : "sparse",
+    "buildSystem" : "maven",
+    "externalDependencies" : [ ],
+    "dependentProjectExternalDependencies" : [ {
+      "projectUID" : "12654",
+      "projectName" : "ProphecySparkBasicsPython",
+      "externalDependencies" : [ ]
+    }, {
+      "projectUID" : "12655",
+      "projectName" : "ProphecyWarehousePython",
+      "externalDependencies" : [ ]
+    } ],
+    "isImported" : false,
+    "interimMode" : "Full",
+    "interimModeEnabled" : true,
+    "visualCodeInterimMode" : "Disabled",
+    "recordsLimit" : {
+      "enabled" : false,
+      "value" : 1000
+    },
+    "topLevelPackage" : "scd2_merge",
+    "configurationVersion" : "v1"
+  },
+  "connections" : [ {
+    "id" : "GRbRnWbeJ6BXOpfFHiuEY$$yf34jjkl8BIoEXMrIbq-H",
+    "source" : "rfiq2Toc-drR8KWoi37Hm$$bBUvR52c7oYgOeE9BMdR8",
+    "sourcePort" : "yBQpVmDVv1QzBpXHngeuD$$f7cEhtk-we-PUMStnxuNc",
+    "target" : "tDwZRzoGpVhwVdG6jhZcl$$1mlAjIpwbJBg-Wxx_LVwq",
+    "targetPort" : "O_lUmQmk_tm53KhyRXb9h$$DixszBO_FVP4v-b6Zze4p"
+  }, {
+    "id" : "tstmeSXpr3Vol71M1EpOC$$qcd9mIIJVKVoVm2p2quGg",
+    "source" : "tDwZRzoGpVhwVdG6jhZcl$$1mlAjIpwbJBg-Wxx_LVwq",
+    "sourcePort" : "eRRvbFEbgUCqKNv1ZXogU$$DUrJfBFYm5cPoIp9wDvPt",
+    "target" : "L_J-0ysdbo2eO1anQwxi9$$uuao6NNDdo34EMFNTieFL",
+    "targetPort" : "linUASWzKrLU0E2zvXSr6$$0THYM7W8TnXS5CE2YG7bo"
+  } ],
+  "processes" : {
+    "rfiq2Toc-drR8KWoi37Hm$$bBUvR52c7oYgOeE9BMdR8" : {
+      "id" : "rfiq2Toc-drR8KWoi37Hm$$bBUvR52c7oYgOeE9BMdR8",
+      "component" : "Subgraph",
+      "metadata" : {
+        "label" : "GenerateRandomIncrement",
+        "slug" : "GenerateRandomIncrement",
+        "x" : 200,
+        "y" : 180,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "yBQpVmDVv1QzBpXHngeuD$$f7cEhtk-we-PUMStnxuNc",
+          "slug" : "out0"
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      },
+      "properties" : {
+        "packageName" : "data",
+        "externalId" : "subgraphs/GenerateRandomIncrement",
+        "name" : "GenerateRandomIncrement"
+      },
+      "connections" : [ {
+        "id" : "iW9_mysydzOrNd1jtPGCT",
+        "source" : "pMN06Mx4cGNCTF5xIo19z$$I1lwv-XInDHuYQkJCpaBM",
+        "sourcePort" : "nRKFrJk3FjH1GHN-QgsN9$$L_CZlZGuDdxSGRqAVc3Jx",
+        "target" : "oYnx2RIhGhCqQyq7sNfpI$$ZAe9JzTks6CUZlN5n2CwD",
+        "targetPort" : "mM7ir_D0scKCAg_eQl4Ru$$ZXpRn9XZCtWUNNGsjhkAB"
+      }, {
+        "id" : "nWCi4Zch5CeAkhRd6eeLl",
+        "source" : "oYnx2RIhGhCqQyq7sNfpI$$ZAe9JzTks6CUZlN5n2CwD",
+        "sourcePort" : "WjscrqYe7iGTGw6ehkQg6$$IZa1R5twLqiAXmLG1Ac7O",
+        "target" : "ijP-AI7o0asM_ss70X5IP$$opalFlBlqgsZDHJniSsM2",
+        "targetPort" : "QeD23uC8wixYTZ_to5c89$$vniFNPTxS2ijy6YZGhO8n"
+      }, {
+        "id" : "Q1nsNfmTFB-oZEeauPrUl",
+        "source" : "ijP-AI7o0asM_ss70X5IP$$opalFlBlqgsZDHJniSsM2",
+        "sourcePort" : "5aAZFmF8E-INCsFuFfWAN$$bjyE-79UPTVdH1o9cH1ja",
+        "target" : "pHiX4xWnPMs1Gkvi0bcOZ$$RIH2b8n-2dvR5bnLLARa6",
+        "targetPort" : "5wlEJ9rrYtAyxVH01SOG3$$qCzkgIDtp_D2ZmhmvwHzU"
+      }, {
+        "id" : "YVgMnR2xNHmv0n8zOrNFN",
+        "source" : "pHiX4xWnPMs1Gkvi0bcOZ$$RIH2b8n-2dvR5bnLLARa6",
+        "sourcePort" : "F8xnFhuYYiJWcTag98pr2$$ERuovtgUIDZR0o7VTKONQ",
+        "target" : "YsLv9M_vzkBBbsxYJUCUV$$NeHwKM8c7WUvNq-tVk2Bo",
+        "targetPort" : "DltODBRTEWjBdDbNIpVxy$$yLNZAfX92v5WLHjPWdhY2"
+      }, {
+        "id" : "Qc4Z_zsWNJKjSR8u2UqDs",
+        "source" : "YsLv9M_vzkBBbsxYJUCUV$$NeHwKM8c7WUvNq-tVk2Bo",
+        "sourcePort" : "BzetactkhDOfMOg2gSh6w$$woYEpQKMme5sB0EjgaBiv",
+        "target" : "Dj6oja_WmBTXMN3AJOvSx$$e7OfBlzsW4UuL1hth2Eqy",
+        "targetPort" : "CqUNgShTLlIP_9rGWdQw5$$vJOsA_8GaEQigHyelSS_o"
+      }, {
+        "id" : "pc5jjLXZEF5ozs_-LoHct",
+        "source" : "YsLv9M_vzkBBbsxYJUCUV$$NeHwKM8c7WUvNq-tVk2Bo",
+        "sourcePort" : "3tTwgv9x04B4cnmRTuIvR$$6E8QLmZVsiHwcrjqgwQJ8",
+        "target" : "BO3hrv5tZ8LxoTOjZ6Ajv$$4TBt2IVpFujYxAYj5be9Y",
+        "targetPort" : "gJ4OqobFeoe-4rQkQYgsz$$EH60wb9GFUN4aSnLWBNND"
+      }, {
+        "id" : "5iCNX4Ef6AwebEUVoC5ez",
+        "source" : "YsLv9M_vzkBBbsxYJUCUV$$NeHwKM8c7WUvNq-tVk2Bo",
+        "sourcePort" : "1Uz_9EH85JsTgAYbj-mkd$$lRIs2BZm-Jh-kWRAdvPtA",
+        "target" : "_wPo8nbcxQjMT-oUP80vb$$HpuHgKIiAadh-Yi0X5UYm",
+        "targetPort" : "QfE6jzKSeJ2e8ieA7Cp7D$$S3A60XmcNf54InMSvVA-k"
+      }, {
+        "id" : "erCckECC4O_97kDx9Uc3d",
+        "source" : "Dj6oja_WmBTXMN3AJOvSx$$e7OfBlzsW4UuL1hth2Eqy",
+        "sourcePort" : "wTsreSYOqpBYFlyOlD0Co$$XMy9_5OJBvGd23urSYrnW",
+        "target" : "_wPo8nbcxQjMT-oUP80vb$$HpuHgKIiAadh-Yi0X5UYm",
+        "targetPort" : "t2NliMEf8MbMxm93AW1-f$$mAcO3zowGimkl8X3YBQWA"
+      }, {
+        "id" : "I-IRCVbGv00pDVX3UNG8g",
+        "source" : "BO3hrv5tZ8LxoTOjZ6Ajv$$4TBt2IVpFujYxAYj5be9Y",
+        "sourcePort" : "Id2XhH-cygg4tUCsh-uJI$$lbJtEareC7-uHbSS1Z9O4",
+        "target" : "_wPo8nbcxQjMT-oUP80vb$$HpuHgKIiAadh-Yi0X5UYm",
+        "targetPort" : "Ns16gtqhh32YXej-8Kn3q$$kK-k8SsfAG3_63DcVTfyE"
+      }, {
+        "id" : "_lRUxYpebrFKn3cnWc1II",
+        "source" : "_wPo8nbcxQjMT-oUP80vb$$HpuHgKIiAadh-Yi0X5UYm",
+        "sourcePort" : "DolCO-f59RV5mwmX4Vapr$$Z2-H0BwaLppz6lbp0GMrQ",
+        "target" : "ULnjpJmU0yQOfWY7sIxk5$$yPT_zGF00jpa-hw2l7Rgs",
+        "targetPort" : "obfkU4wZhOigLfWcLbrvN$$YzuyrVg2Di77J_RVlDZ89"
+      }, {
+        "id" : "SifSrOCiHDCtV2VLzI_48",
+        "source" : "ULnjpJmU0yQOfWY7sIxk5$$yPT_zGF00jpa-hw2l7Rgs",
+        "sourcePort" : "pLt1sEek6bBZM0u-uqkYC$$1UKmJBZEn06BqEsGApKSx",
+        "target" : "h_oHj4RIiO0UOF_pBfL0t$$AKFeXmEaaK-a-UrS8n5T5",
+        "targetPort" : "oK7dNs66H-ZMxyQRyxvZp$$5Ws57iQEuyl0G50Ky0j8J"
+      }, {
+        "id" : "NZcHOnvykv9FtHIK_ljKG",
+        "source" : "h_oHj4RIiO0UOF_pBfL0t$$AKFeXmEaaK-a-UrS8n5T5",
+        "sourcePort" : "GY___oXo-84TpUMer3Qrg$$PGWz18MaQO5c-hgnOn_66",
+        "target" : "rfiq2Toc-drR8KWoi37Hm$$bBUvR52c7oYgOeE9BMdR8",
+        "targetPort" : "yBQpVmDVv1QzBpXHngeuD$$f7cEhtk-we-PUMStnxuNc"
+      } ],
+      "processes" : {
+        "_wPo8nbcxQjMT-oUP80vb$$HpuHgKIiAadh-Yi0X5UYm" : {
+          "id" : "_wPo8nbcxQjMT-oUP80vb$$HpuHgKIiAadh-Yi0X5UYm",
+          "component" : "SetOperation",
+          "metadata" : {
+            "label" : "SetOperation_1",
+            "slug" : "SetOperation_1",
+            "x" : 1360.0005856762066,
+            "y" : 160,
+            "phase" : 0,
+            "cache" : false,
+            "detailedStats" : false,
+            "isImported" : false,
+            "comment" : "The function does a union of the three distributions of data across three dataframes. The 1st subset simulates unchanged data. The 2nd subset simulates updated existing records. The 3rd subset simulates brand new records. "
+          },
+          "ports" : {
+            "inputs" : [ {
+              "id" : "QfE6jzKSeJ2e8ieA7Cp7D$$S3A60XmcNf54InMSvVA-k",
+              "slug" : "in0",
+              "schema" : {
+                "type" : "struct",
+                "fields" : [ {
+                  "name" : "customer_id",
+                  "type" : "integer",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "tax_id",
+                  "type" : "double",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "tax_code",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "customer_name",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "state",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "random_id",
+                  "type" : "long",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                } ]
+              },
+              "isStreaming" : false
+            }, {
+              "id" : "t2NliMEf8MbMxm93AW1-f$$mAcO3zowGimkl8X3YBQWA",
+              "slug" : "in1",
+              "schema" : {
+                "type" : "struct",
+                "fields" : [ {
+                  "name" : "customer_id",
+                  "type" : "integer",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "tax_id",
+                  "type" : "double",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "tax_code",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "customer_name",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "state",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "random_id",
+                  "type" : "long",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                } ]
+              },
+              "isStreaming" : false
+            }, {
+              "id" : "Ns16gtqhh32YXej-8Kn3q$$kK-k8SsfAG3_63DcVTfyE",
+              "slug" : "in2",
+              "schema" : {
+                "type" : "struct",
+                "fields" : [ {
+                  "name" : "customer_id",
+                  "type" : "integer",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "tax_id",
+                  "type" : "double",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "tax_code",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "customer_name",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "state",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "random_id",
+                  "type" : "long",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                } ]
+              },
+              "isStreaming" : false
+            } ],
+            "outputs" : [ {
+              "id" : "DolCO-f59RV5mwmX4Vapr$$Z2-H0BwaLppz6lbp0GMrQ",
+              "slug" : "out"
+            } ],
+            "selectedInputFields" : [ ],
+            "isCustomOutputSchema" : false,
+            "autoUpdateOnRun" : false
+          },
+          "properties" : {
+            "operationType" : "unionAll",
+            "allowMissingColumns" : false
+          },
+          "componentInfo" : {
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.0.4&projectSubscriptionProjectId=12654&path=gems/SetOperation",
+            "projectName" : "ProphecySparkBasicsPython"
+          }
+        },
+        "pMN06Mx4cGNCTF5xIo19z$$I1lwv-XInDHuYQkJCpaBM" : {
+          "id" : "pMN06Mx4cGNCTF5xIo19z$$I1lwv-XInDHuYQkJCpaBM",
+          "component" : "Source",
+          "metadata" : {
+            "label" : "customers_raw",
+            "slug" : "customers_raw",
+            "x" : 160.00096079878793,
+            "y" : 160,
+            "phase" : 0,
+            "cache" : false,
+            "detailedStats" : false,
+            "isImported" : false,
+            "comment" : "Reads Customers CSV file from retail dataset."
+          },
+          "ports" : {
+            "inputs" : [ ],
+            "outputs" : [ {
+              "id" : "nRKFrJk3FjH1GHN-QgsN9$$L_CZlZGuDdxSGRqAVc3Jx",
+              "slug" : "out"
+            } ],
+            "selectedInputFields" : [ ],
+            "isCustomOutputSchema" : false,
+            "autoUpdateOnRun" : false
+          },
+          "properties" : {
+            "datasetId" : "datasets/customers_raw"
+          }
+        },
+        "ijP-AI7o0asM_ss70X5IP$$opalFlBlqgsZDHJniSsM2" : {
+          "id" : "ijP-AI7o0asM_ss70X5IP$$opalFlBlqgsZDHJniSsM2",
+          "component" : "Deduplicate",
+          "metadata" : {
+            "label" : "Deduplicate_1",
+            "slug" : "Deduplicate_1",
+            "x" : 560.0005275352471,
+            "y" : 160,
+            "phase" : 0,
+            "cache" : false,
+            "detailedStats" : false,
+            "isImported" : false,
+            "comment" : "Remove any duplicate customer_id. "
+          },
+          "ports" : {
+            "inputs" : [ {
+              "id" : "QeD23uC8wixYTZ_to5c89$$vniFNPTxS2ijy6YZGhO8n",
+              "slug" : "in0",
+              "schema" : {
+                "type" : "struct",
+                "fields" : [ {
+                  "name" : "customer_id",
+                  "type" : "integer",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "tax_id",
+                  "type" : "double",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "tax_code",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "customer_name",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "state",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                } ]
+              },
+              "isStreaming" : false
+            } ],
+            "outputs" : [ {
+              "id" : "5aAZFmF8E-INCsFuFfWAN$$bjyE-79UPTVdH1o9cH1ja",
+              "slug" : "out"
+            } ],
+            "selectedInputFields" : [ ],
+            "isCustomOutputSchema" : false,
+            "autoUpdateOnRun" : false
+          },
+          "properties" : {
+            "dedupColumns" : [ {
+              "colName" : "customer_id"
+            } ],
+            "dedupType" : "any",
+            "columnsSelector" : [ "QeD23uC8wixYTZ_to5c89$$diWVcVbwuqoaHEe6Ojiac##customer_id" ],
+            "orders" : [ ],
+            "useOrderBy" : false
+          },
+          "componentInfo" : {
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.0.4&projectSubscriptionProjectId=12654&path=gems/Deduplicate",
+            "projectName" : "ProphecySparkBasicsPython"
+          }
+        },
+        "Dj6oja_WmBTXMN3AJOvSx$$e7OfBlzsW4UuL1hth2Eqy" : {
+          "id" : "Dj6oja_WmBTXMN3AJOvSx$$e7OfBlzsW4UuL1hth2Eqy",
+          "component" : "SchemaTransform",
+          "metadata" : {
+            "label" : "SchemaTransform_2",
+            "slug" : "SchemaTransform_2",
+            "x" : 1160,
+            "y" : 260,
+            "phase" : 0,
+            "cache" : false,
+            "detailedStats" : false,
+            "isImported" : false,
+            "comment" : "For this distribution of rows, we will change the customer_id to a totally new id, simulating new incoming rows. "
+          },
+          "ports" : {
+            "inputs" : [ {
+              "id" : "CqUNgShTLlIP_9rGWdQw5$$vJOsA_8GaEQigHyelSS_o",
+              "slug" : "in0",
+              "schema" : {
+                "type" : "struct",
+                "fields" : [ {
+                  "name" : "customer_id",
+                  "type" : "integer",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "tax_id",
+                  "type" : "double",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "tax_code",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "customer_name",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "state",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "random_id",
+                  "type" : "long",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                } ]
+              },
+              "isStreaming" : false
+            } ],
+            "outputs" : [ {
+              "id" : "wTsreSYOqpBYFlyOlD0Co$$XMy9_5OJBvGd23urSYrnW",
+              "slug" : "out"
+            } ],
+            "selectedInputFields" : [ ],
+            "isCustomOutputSchema" : false,
+            "autoUpdateOnRun" : false
+          },
+          "properties" : {
+            "importLanguage" : "sql",
+            "importString" : "",
+            "transformations" : [ {
+              "MissingColumn" : {
+                "sourceColumn" : "",
+                "defaultValue" : {
+                  "expression" : "",
+                  "format" : "python"
+                }
+              },
+              "DropColumn" : {
+                "sourceColumn" : ""
+              },
+              "kind" : "AddReplaceColumn",
+              "RenameColumn" : {
+                "sourceColumn" : "",
+                "targetColumn" : ""
+              },
+              "AddReplaceColumn" : {
+                "sourceColumn" : "customer_id",
+                "expression" : {
+                  "format" : "sql",
+                  "expression" : "customer_id + cast(floor(rand() * 10000) as int)"
+                }
+              }
+            } ],
+            "activeTab" : "transformations",
+            "columnsSelector" : [ "CqUNgShTLlIP_9rGWdQw5$$wHHgNENFY-EqMijXshxKd##customer_id" ]
+          },
+          "componentInfo" : {
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.0.4&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
+            "projectName" : "ProphecySparkBasicsPython"
+          }
+        },
+        "h_oHj4RIiO0UOF_pBfL0t$$AKFeXmEaaK-a-UrS8n5T5" : {
+          "id" : "h_oHj4RIiO0UOF_pBfL0t$$AKFeXmEaaK-a-UrS8n5T5",
+          "component" : "Deduplicate",
+          "metadata" : {
+            "label" : "Deduplicate_2",
+            "slug" : "Deduplicate_2",
+            "x" : 1760.00024880422,
+            "y" : 160,
+            "phase" : 0,
+            "cache" : false,
+            "detailedStats" : false,
+            "isImported" : false,
+            "comment" : "Run another deduplicate function on customer_id. "
+          },
+          "ports" : {
+            "inputs" : [ {
+              "id" : "oK7dNs66H-ZMxyQRyxvZp$$5Ws57iQEuyl0G50Ky0j8J",
+              "slug" : "in0",
+              "schema" : {
+                "type" : "struct",
+                "fields" : [ {
+                  "name" : "customer_id",
+                  "type" : "integer",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "tax_id",
+                  "type" : "double",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "tax_code",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "customer_name",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "state",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                } ]
+              },
+              "isStreaming" : false
+            } ],
+            "outputs" : [ {
+              "id" : "GY___oXo-84TpUMer3Qrg$$PGWz18MaQO5c-hgnOn_66",
+              "slug" : "out"
+            } ],
+            "selectedInputFields" : [ ],
+            "isCustomOutputSchema" : false,
+            "autoUpdateOnRun" : false
+          },
+          "properties" : {
+            "dedupColumns" : [ {
+              "colName" : "customer_id"
+            } ],
+            "dedupType" : "any",
+            "columnsSelector" : [ "oK7dNs66H-ZMxyQRyxvZp$$BXEkduHvvQObrNP-mh1Cu##customer_id" ],
+            "orders" : [ ],
+            "useOrderBy" : false
+          },
+          "componentInfo" : {
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.0.4&projectSubscriptionProjectId=12654&path=gems/Deduplicate",
+            "projectName" : "ProphecySparkBasicsPython"
+          }
+        },
+        "ULnjpJmU0yQOfWY7sIxk5$$yPT_zGF00jpa-hw2l7Rgs" : {
+          "id" : "ULnjpJmU0yQOfWY7sIxk5$$yPT_zGF00jpa-hw2l7Rgs",
+          "component" : "SchemaTransform",
+          "metadata" : {
+            "label" : "DropRandomId",
+            "slug" : "DropRandomId",
+            "x" : 1560.0007206304692,
+            "y" : 160,
+            "phase" : 0,
+            "cache" : false,
+            "detailedStats" : false,
+            "isImported" : false,
+            "comment" : "Drop the random_id column that was generated in the earlier SchemaTransform gem. "
+          },
+          "ports" : {
+            "inputs" : [ {
+              "id" : "obfkU4wZhOigLfWcLbrvN$$YzuyrVg2Di77J_RVlDZ89",
+              "slug" : "in0",
+              "schema" : {
+                "type" : "struct",
+                "fields" : [ {
+                  "name" : "customer_id",
+                  "type" : "integer",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "tax_id",
+                  "type" : "double",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "tax_code",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "customer_name",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "state",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "random_id",
+                  "type" : "long",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                } ]
+              },
+              "isStreaming" : false
+            } ],
+            "outputs" : [ {
+              "id" : "pLt1sEek6bBZM0u-uqkYC$$1UKmJBZEn06BqEsGApKSx",
+              "slug" : "out"
+            } ],
+            "selectedInputFields" : [ ],
+            "isCustomOutputSchema" : false,
+            "autoUpdateOnRun" : false
+          },
+          "properties" : {
+            "importLanguage" : "sql",
+            "importString" : "",
+            "transformations" : [ {
+              "MissingColumn" : {
+                "sourceColumn" : "",
+                "defaultValue" : {
+                  "expression" : "",
+                  "format" : "python"
+                }
+              },
+              "DropColumn" : {
+                "sourceColumn" : "random_id"
+              },
+              "kind" : "DropColumn",
+              "RenameColumn" : {
+                "sourceColumn" : "",
+                "targetColumn" : ""
+              },
+              "AddReplaceColumn" : {
+                "sourceColumn" : "",
+                "expression" : {
+                  "expression" : "",
+                  "format" : "python"
+                }
+              }
+            } ],
+            "activeTab" : "transformations",
+            "columnsSelector" : [ "obfkU4wZhOigLfWcLbrvN$$FvPwanEvAs7zHWrfTtf3W##random_id" ]
+          },
+          "componentInfo" : {
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.0.4&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
+            "projectName" : "ProphecySparkBasicsPython"
+          }
+        },
+        "BO3hrv5tZ8LxoTOjZ6Ajv$$4TBt2IVpFujYxAYj5be9Y" : {
+          "id" : "BO3hrv5tZ8LxoTOjZ6Ajv$$4TBt2IVpFujYxAYj5be9Y",
+          "component" : "SchemaTransform",
+          "metadata" : {
+            "label" : "SchemaTransform_3",
+            "slug" : "SchemaTransform_3",
+            "x" : 1160,
+            "y" : 460,
+            "phase" : 0,
+            "cache" : false,
+            "detailedStats" : false,
+            "isImported" : false,
+            "comment" : "For this distribution of rows, we will make modifications to existing customer_ids, simulating updates."
+          },
+          "ports" : {
+            "inputs" : [ {
+              "id" : "gJ4OqobFeoe-4rQkQYgsz$$EH60wb9GFUN4aSnLWBNND",
+              "slug" : "in0",
+              "schema" : {
+                "type" : "struct",
+                "fields" : [ {
+                  "name" : "customer_id",
+                  "type" : "integer",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "tax_id",
+                  "type" : "double",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "tax_code",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "customer_name",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "state",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "random_id",
+                  "type" : "long",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                } ]
+              },
+              "isStreaming" : false
+            } ],
+            "outputs" : [ {
+              "id" : "Id2XhH-cygg4tUCsh-uJI$$lbJtEareC7-uHbSS1Z9O4",
+              "slug" : "out"
+            } ],
+            "selectedInputFields" : [ ],
+            "isCustomOutputSchema" : false,
+            "autoUpdateOnRun" : false
+          },
+          "properties" : {
+            "importLanguage" : "sql",
+            "importString" : "",
+            "transformations" : [ {
+              "MissingColumn" : {
+                "sourceColumn" : "",
+                "defaultValue" : {
+                  "expression" : "",
+                  "format" : "python"
+                }
+              },
+              "DropColumn" : {
+                "sourceColumn" : ""
+              },
+              "kind" : "AddReplaceColumn",
+              "RenameColumn" : {
+                "sourceColumn" : "",
+                "targetColumn" : ""
+              },
+              "AddReplaceColumn" : {
+                "sourceColumn" : "customer_name",
+                "expression" : {
+                  "format" : "sql",
+                  "expression" : "if(rand() > 0.5, upper(customer_name), lower(customer_name))"
+                }
+              }
+            } ],
+            "activeTab" : "transformations",
+            "columnsSelector" : [ "gJ4OqobFeoe-4rQkQYgsz$$1kTwf3XaDHlc-CW1ED_YR##customer_name" ]
+          },
+          "componentInfo" : {
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.0.4&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
+            "projectName" : "ProphecySparkBasicsPython"
+          }
+        },
+        "YsLv9M_vzkBBbsxYJUCUV$$NeHwKM8c7WUvNq-tVk2Bo" : {
+          "id" : "YsLv9M_vzkBBbsxYJUCUV$$NeHwKM8c7WUvNq-tVk2Bo",
+          "component" : "RowDistributor",
+          "metadata" : {
+            "label" : "RowDistributor_1",
+            "slug" : "RowDistributor_1",
+            "x" : 960.0005268311457,
+            "y" : 160,
+            "phase" : 0,
+            "cache" : false,
+            "detailedStats" : false,
+            "isImported" : false,
+            "comment" : "The function splits the existing dataframe into three separate dataframes depending on the randomly assigned random_id number."
+          },
+          "ports" : {
+            "inputs" : [ {
+              "id" : "DltODBRTEWjBdDbNIpVxy$$yLNZAfX92v5WLHjPWdhY2",
+              "slug" : "in0",
+              "schema" : {
+                "type" : "struct",
+                "fields" : [ {
+                  "name" : "customer_id",
+                  "type" : "integer",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "tax_id",
+                  "type" : "double",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "tax_code",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "customer_name",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "state",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "random_id",
+                  "type" : "long",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                } ]
+              },
+              "isStreaming" : false
+            } ],
+            "outputs" : [ {
+              "id" : "1Uz_9EH85JsTgAYbj-mkd$$lRIs2BZm-Jh-kWRAdvPtA",
+              "slug" : "out0"
+            }, {
+              "id" : "BzetactkhDOfMOg2gSh6w$$woYEpQKMme5sB0EjgaBiv",
+              "slug" : "out1"
+            }, {
+              "id" : "3tTwgv9x04B4cnmRTuIvR$$6E8QLmZVsiHwcrjqgwQJ8",
+              "slug" : "out2"
+            } ],
+            "selectedInputFields" : [ ],
+            "isCustomOutputSchema" : false,
+            "autoUpdateOnRun" : false
+          },
+          "properties" : {
+            "outports" : [ {
+              "path" : "out0",
+              "id" : "1Uz_9EH85JsTgAYbj-mkd$$_UWeRxDU5NA9MbroW6QWn",
+              "model" : {
+                "format" : "sql",
+                "expression" : "random_id = 0"
+              }
+            }, {
+              "path" : "out1",
+              "id" : "BzetactkhDOfMOg2gSh6w$$K9F4-aOVjWRRZ12Wnsvul",
+              "model" : {
+                "format" : "sql",
+                "expression" : "random_id = 1"
+              }
+            }, {
+              "path" : "out2",
+              "id" : "3tTwgv9x04B4cnmRTuIvR$$vNhwHvIU0yNpekGKONEGb",
+              "model" : {
+                "format" : "sql",
+                "expression" : "random_id = 2"
+              }
+            } ],
+            "distributeUnmatchedRows" : null
+          },
+          "componentInfo" : {
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.0.4&projectSubscriptionProjectId=12654&path=gems/RowDistributor",
+            "projectName" : "ProphecySparkBasicsPython"
+          }
+        },
+        "pHiX4xWnPMs1Gkvi0bcOZ$$RIH2b8n-2dvR5bnLLARa6" : {
+          "id" : "pHiX4xWnPMs1Gkvi0bcOZ$$RIH2b8n-2dvR5bnLLARa6",
+          "component" : "SchemaTransform",
+          "metadata" : {
+            "label" : "SchemaTransform_1",
+            "slug" : "SchemaTransform_1",
+            "x" : 760.0009651870012,
+            "y" : 160,
+            "phase" : 0,
+            "cache" : false,
+            "detailedStats" : false,
+            "isImported" : false,
+            "comment" : "We will simulate a MERGE condition by modifying the existing rows to conditions that require a update or insert. \n\nRandomly assigns a number 0, 1, 2 and assigns it to each row with roughly distributes it equally. We will then:\n-Leave 1/3 of the data untouched\n-Change the customer_id for 1/3 of the data (so it's essentially new rows)\n-Modify the data for 1/3 of the rows while keeping customer_id static. "
+          },
+          "ports" : {
+            "inputs" : [ {
+              "id" : "5wlEJ9rrYtAyxVH01SOG3$$qCzkgIDtp_D2ZmhmvwHzU",
+              "slug" : "in0",
+              "schema" : {
+                "type" : "struct",
+                "fields" : [ {
+                  "name" : "customer_id",
+                  "type" : "integer",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "tax_id",
+                  "type" : "double",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "tax_code",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "customer_name",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "state",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                } ]
+              },
+              "isStreaming" : false
+            } ],
+            "outputs" : [ {
+              "id" : "F8xnFhuYYiJWcTag98pr2$$ERuovtgUIDZR0o7VTKONQ",
+              "slug" : "out"
+            } ],
+            "selectedInputFields" : [ ],
+            "isCustomOutputSchema" : false,
+            "autoUpdateOnRun" : false
+          },
+          "properties" : {
+            "importLanguage" : "sql",
+            "importString" : "",
+            "transformations" : [ {
+              "MissingColumn" : {
+                "sourceColumn" : "",
+                "defaultValue" : {
+                  "expression" : "",
+                  "format" : "python"
+                }
+              },
+              "DropColumn" : {
+                "sourceColumn" : ""
+              },
+              "kind" : "AddReplaceColumn",
+              "RenameColumn" : {
+                "sourceColumn" : "",
+                "targetColumn" : ""
+              },
+              "AddReplaceColumn" : {
+                "sourceColumn" : "random_id",
+                "expression" : {
+                  "format" : "sql",
+                  "expression" : "floor(3*rand())"
+                }
+              }
+            } ],
+            "activeTab" : "transformations",
+            "columnsSelector" : [ ]
+          },
+          "componentInfo" : {
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.0.4&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
+            "projectName" : "ProphecySparkBasicsPython"
+          }
+        },
+        "oYnx2RIhGhCqQyq7sNfpI$$ZAe9JzTks6CUZlN5n2CwD" : {
+          "id" : "oYnx2RIhGhCqQyq7sNfpI$$ZAe9JzTks6CUZlN5n2CwD",
+          "component" : "Reformat",
+          "metadata" : {
+            "label" : "SelectFields",
+            "slug" : "SelectFields",
+            "x" : 360.0000867557395,
+            "y" : 160,
+            "phase" : 0,
+            "cache" : false,
+            "detailedStats" : false,
+            "isImported" : false,
+            "comment" : "This gem selects a subset of relevant columns from the original CSV file. "
+          },
+          "ports" : {
+            "inputs" : [ {
+              "id" : "mM7ir_D0scKCAg_eQl4Ru$$ZXpRn9XZCtWUNNGsjhkAB",
+              "slug" : "in0",
+              "schema" : {
+                "type" : "struct",
+                "fields" : [ {
+                  "name" : "customer_id",
+                  "type" : "integer",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "tax_id",
+                  "type" : "double",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "tax_code",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "customer_name",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "state",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "city",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "postcode",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "street",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "number",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "unit",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "region",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "district",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "lon",
+                  "type" : "double",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "lat",
+                  "type" : "double",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "ship_to_address",
+                  "type" : "string",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "valid_from",
+                  "type" : "integer",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "valid_to",
+                  "type" : "double",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "units_purchased",
+                  "type" : "double",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                }, {
+                  "name" : "loyalty_segment",
+                  "type" : "integer",
+                  "nullable" : true,
+                  "metadata" : {
+                    "description" : "",
+                    "mappings" : [ ],
+                    "tags" : [ ]
+                  }
+                } ]
+              },
+              "isStreaming" : false
+            } ],
+            "outputs" : [ {
+              "id" : "WjscrqYe7iGTGw6ehkQg6$$IZa1R5twLqiAXmLG1Ac7O",
+              "slug" : "out"
+            } ],
+            "selectedInputFields" : [ ],
+            "isCustomOutputSchema" : false,
+            "autoUpdateOnRun" : false
+          },
+          "properties" : {
+            "importLanguage" : "${$.workflow.metainfo.frontEndLanguage}",
+            "expressions" : [ {
+              "target" : "customer_id",
+              "expression" : {
+                "format" : "sql",
+                "expression" : "customer_id"
+              },
+              "description" : ""
+            }, {
+              "target" : "tax_id",
+              "expression" : {
+                "format" : "sql",
+                "expression" : "tax_id"
+              },
+              "description" : ""
+            }, {
+              "target" : "tax_code",
+              "expression" : {
+                "format" : "sql",
+                "expression" : "tax_code"
+              },
+              "description" : ""
+            }, {
+              "target" : "customer_name",
+              "expression" : {
+                "format" : "sql",
+                "expression" : "customer_name"
+              },
+              "description" : ""
+            }, {
+              "target" : "state",
+              "expression" : {
+                "format" : "sql",
+                "expression" : "state"
+              },
+              "description" : ""
+            } ],
+            "importString" : "",
+            "activeTab" : "expressions",
+            "columnsSelector" : [ "mM7ir_D0scKCAg_eQl4Ru$$DJ1UeHrUnGYtXUuCGmbPF##state", "mM7ir_D0scKCAg_eQl4Ru$$DJ1UeHrUnGYtXUuCGmbPF##customer_name", "mM7ir_D0scKCAg_eQl4Ru$$DJ1UeHrUnGYtXUuCGmbPF##tax_id", "mM7ir_D0scKCAg_eQl4Ru$$DJ1UeHrUnGYtXUuCGmbPF##tax_code", "mM7ir_D0scKCAg_eQl4Ru$$DJ1UeHrUnGYtXUuCGmbPF##customer_id" ]
+          },
+          "componentInfo" : {
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.0.4&projectSubscriptionProjectId=12654&path=gems/Reformat",
+            "projectName" : "ProphecySparkBasicsPython"
+          }
+        }
+      },
+      "externalDependencies" : [ ]
+    },
+    "tDwZRzoGpVhwVdG6jhZcl$$1mlAjIpwbJBg-Wxx_LVwq" : {
+      "id" : "tDwZRzoGpVhwVdG6jhZcl$$1mlAjIpwbJBg-Wxx_LVwq",
+      "component" : "SchemaTransform",
+      "metadata" : {
+        "label" : "AddScd2Fields",
+        "slug" : "AddScd2Fields",
+        "x" : 400,
+        "y" : 180,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false,
+        "comment" : "This gem adds SCD2 fields to a DataFrame containing randomly generated increments. The from_time field is set to the current timestamp, the end_time field is set to null, the is_current field is set to True, and the is_old_value field is set to False. These fields are commonly used in slowly changing dimension type 2 tables to track changes over time."
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "O_lUmQmk_tm53KhyRXb9h$$DixszBO_FVP4v-b6Zze4p",
+          "slug" : "GenerateRandomIncrement",
+          "schema" : {
+            "type" : "struct",
+            "fields" : [ {
+              "name" : "customer_id",
+              "type" : "integer",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "tax_id",
+              "type" : "double",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "tax_code",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "customer_name",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "state",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            } ]
+          },
+          "isStreaming" : false
+        } ],
+        "outputs" : [ {
+          "id" : "eRRvbFEbgUCqKNv1ZXogU$$DUrJfBFYm5cPoIp9wDvPt",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      },
+      "properties" : {
+        "importLanguage" : "sql",
+        "importString" : "",
+        "transformations" : [ {
+          "MissingColumn" : {
+            "sourceColumn" : "",
+            "defaultValue" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          },
+          "DropColumn" : {
+            "sourceColumn" : ""
+          },
+          "kind" : "AddReplaceColumn",
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          },
+          "AddReplaceColumn" : {
+            "sourceColumn" : "from_time",
+            "expression" : {
+              "format" : "sql",
+              "expression" : "current_timestamp()"
+            }
+          }
+        }, {
+          "MissingColumn" : {
+            "sourceColumn" : "",
+            "defaultValue" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          },
+          "DropColumn" : {
+            "sourceColumn" : ""
+          },
+          "kind" : "AddReplaceColumn",
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          },
+          "AddReplaceColumn" : {
+            "sourceColumn" : "end_time",
+            "expression" : {
+              "format" : "sql",
+              "expression" : "cast(null as timestamp)"
+            }
+          }
+        }, {
+          "MissingColumn" : {
+            "sourceColumn" : "",
+            "defaultValue" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          },
+          "DropColumn" : {
+            "sourceColumn" : ""
+          },
+          "kind" : "AddReplaceColumn",
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          },
+          "AddReplaceColumn" : {
+            "sourceColumn" : "is_current",
+            "expression" : {
+              "format" : "sql",
+              "expression" : "true"
+            }
+          }
+        }, {
+          "MissingColumn" : {
+            "sourceColumn" : "",
+            "defaultValue" : {
+              "expression" : "",
+              "format" : "python"
+            }
+          },
+          "DropColumn" : {
+            "sourceColumn" : ""
+          },
+          "kind" : "AddReplaceColumn",
+          "RenameColumn" : {
+            "sourceColumn" : "",
+            "targetColumn" : ""
+          },
+          "AddReplaceColumn" : {
+            "sourceColumn" : "is_old_value",
+            "expression" : {
+              "format" : "sql",
+              "expression" : "false"
+            }
+          }
+        } ],
+        "activeTab" : "transformations",
+        "columnsSelector" : [ ]
+      },
+      "componentInfo" : {
+        "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.0.4&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
+        "projectName" : "ProphecySparkBasicsPython"
+      }
+    },
+    "L_J-0ysdbo2eO1anQwxi9$$uuao6NNDdo34EMFNTieFL" : {
+      "id" : "L_J-0ysdbo2eO1anQwxi9$$uuao6NNDdo34EMFNTieFL",
+      "component" : "Target",
+      "metadata" : {
+        "label" : "customers_scd2",
+        "slug" : "customers_scd2",
+        "x" : 600,
+        "y" : 180,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false,
+        "comment" : "This gem implements a Slowly Changing Dimension Type 2 (SCD2) process for customer data. It uses Delta Lake to maintain a historical record of changes to customer data over time. The process identifies changes to customer data and creates a new record with a new version number and start and end dates. This enables businesses to track changes to customer data over time and analyze customer behavior and preferences."
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "linUASWzKrLU0E2zvXSr6$$0THYM7W8TnXS5CE2YG7bo",
+          "slug" : "in0",
+          "schema" : {
+            "type" : "struct",
+            "fields" : [ {
+              "name" : "customer_id",
+              "type" : "integer",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "tax_id",
+              "type" : "double",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "tax_code",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "customer_name",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "state",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "from_time",
+              "type" : "timestamp",
+              "nullable" : false,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "end_time",
+              "type" : "timestamp",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "is_current",
+              "type" : "boolean",
+              "nullable" : false,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "is_old_value",
+              "type" : "boolean",
+              "nullable" : false,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            } ]
+          },
+          "isStreaming" : false
+        } ],
+        "outputs" : [ ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      },
+      "properties" : {
+        "datasetId" : "datasets/customers_scd2"
+      }
+    },
+    "9XjAxmG-tenTqDZUHxRop$$ssKU10KT6YSCu9KXJ_IOn" : {
+      "id" : "9XjAxmG-tenTqDZUHxRop$$ssKU10KT6YSCu9KXJ_IOn",
+      "component" : "Source",
+      "metadata" : {
+        "label" : "customers_scd2_1",
+        "slug" : "customers_scd2_1",
+        "x" : 200,
+        "y" : 360,
+        "phase" : 1,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "RqnsFhg21PpD7h2YbDamq$$ZJM8rY5y7vPs9c1Jhd4-7",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      },
+      "properties" : {
+        "datasetId" : "datasets/customers_scd2"
+      }
+    }
+  },
+  "ports" : {
+    "inputs" : [ ],
+    "outputs" : [ ],
+    "selectedInputFields" : [ ],
+    "isCustomOutputSchema" : false,
+    "autoUpdateOnRun" : false
+  }
+}
