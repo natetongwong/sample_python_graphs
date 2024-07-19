@@ -1,5 +1,6 @@
 name: test_unlinked
-description: ''
+description: "Sample pipelines that demonstrate handling SCD Type 1 and Type 2 \n\
+  UPSERT Transformations. "
 version: 0.0.1
 author: nimbus@simpledatalabs.com
 language: python
