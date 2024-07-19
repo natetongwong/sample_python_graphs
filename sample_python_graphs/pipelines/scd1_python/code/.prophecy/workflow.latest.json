@@ -14,7 +14,7 @@
     "id" : "1",
     "uri" : "pipelines/scd1_python",
     "language" : "python",
-    "fabricId" : "4678",
+    "fabricId" : "14943",
     "frontEndLanguage" : "sql",
     "mode" : "batch",
     "udfs" : {
