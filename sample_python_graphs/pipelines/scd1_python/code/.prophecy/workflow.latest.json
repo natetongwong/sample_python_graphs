@@ -3,6 +3,14 @@
     "migrationVersions" : {
       "gemBuilderVersion" : "v1"
     },
+    "functions" : { },
+    "codeGenConfiguration" : {
+      "editableConfig" : false,
+      "plibVersion" : {
+        "mavenVersion" : "8.0.25",
+        "pyPiVersion" : "1.9.9"
+      }
+    },
     "id" : "1",
     "uri" : "pipelines/scd1_python",
     "language" : "python",
@@ -84,7 +92,7 @@
       "value" : 1000
     },
     "topLevelPackage" : "scdpython",
-    "configurationVersion" : "v1"
+    "configurationVersion" : "v2"
   },
   "connections" : [ {
     "id" : "Vgix2MvX8CPAUvD__YpBn",
@@ -94,6 +102,111 @@
     "targetPort" : "VWmm7fGhC8jbSA8elTiO6$$438malNFsrwzk5OR6gtJ_"
   } ],
   "processes" : {
+    "em0T9keT26dk48_ZlWcKU$$HZCAtePwot9twQNiPgo39" : {
+      "id" : "em0T9keT26dk48_ZlWcKU$$HZCAtePwot9twQNiPgo39",
+      "component" : "Source",
+      "metadata" : {
+        "label" : "customers_scd1_read",
+        "slug" : "customers_scd1_read",
+        "x" : -220,
+        "y" : 260,
+        "phase" : 1,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "xoG7A8-Ko-Xwppnh3No9j$$saKSItulVD6wlA4alQbVl",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      },
+      "properties" : {
+        "datasetId" : "datasets/customers_scd1"
+      }
+    },
+    "ACmhiB-j61JCA3Q9gMuh4$$du7pz7z5cl_DGkSjZk8Xl" : {
+      "id" : "ACmhiB-j61JCA3Q9gMuh4$$du7pz7z5cl_DGkSjZk8Xl",
+      "component" : "Target",
+      "metadata" : {
+        "label" : "customers_scd1_write",
+        "slug" : "customers_scd1_write",
+        "x" : 0,
+        "y" : 80,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false,
+        "comment" : "This gem implements a Slowly Changing Dimension Type 1 (SCD1) merge operation on customer data. It checks if the target table exists and merges the source data with the target data based on the customer_id identifier. If a match is found, it updates all columns in the target table with the corresponding values from the source table. If no match is found, it inserts all columns from the source table into the target table. If the target table does not exist, it creates it and writes the source data to it in Delta format."
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "VWmm7fGhC8jbSA8elTiO6$$438malNFsrwzk5OR6gtJ_",
+          "slug" : "in0",
+          "schema" : {
+            "type" : "struct",
+            "fields" : [ {
+              "name" : "customer_id",
+              "type" : "integer",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "tax_id",
+              "type" : "double",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "tax_code",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "customer_name",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "state",
+              "type" : "string",
+              "nullable" : true,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            } ]
+          },
+          "isStreaming" : false
+        } ],
+        "outputs" : [ ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      },
+      "properties" : {
+        "datasetId" : "datasets/customers_scd1"
+      }
+    },
     "rfiq2Toc-drR8KWoi37Hm$$4pjBEEXicj4K91ciDa6BN" : {
       "id" : "rfiq2Toc-drR8KWoi37Hm$$4pjBEEXicj4K91ciDa6BN",
       "component" : "Subgraph",
@@ -124,73 +237,73 @@
         "name" : "GenerateRandomIncrement"
       },
       "connections" : [ {
-        "id" : "iW9_mysydzOrNd1jtPGCT",
+        "id" : "cs6xcFbOteU8v59MkIdDt",
         "source" : "pMN06Mx4cGNCTF5xIo19z$$h4ZMt0R31vU04M83xUnag",
         "sourcePort" : "nRKFrJk3FjH1GHN-QgsN9$$nrKx4znLxeD-SP41HBYIC",
         "target" : "oYnx2RIhGhCqQyq7sNfpI$$4FEQ1aIaHFCUCi0uOsn2z",
         "targetPort" : "mM7ir_D0scKCAg_eQl4Ru$$DJ1UeHrUnGYtXUuCGmbPF"
       }, {
-        "id" : "nWCi4Zch5CeAkhRd6eeLl",
+        "id" : "epvYk1D8mQSoXpWRl0BtH",
         "source" : "oYnx2RIhGhCqQyq7sNfpI$$4FEQ1aIaHFCUCi0uOsn2z",
         "sourcePort" : "WjscrqYe7iGTGw6ehkQg6$$w6_oEi-ULs-4bYj2S_dzb",
         "target" : "ijP-AI7o0asM_ss70X5IP$$EI8o_xxiGQ9AL_vgyQZHT",
         "targetPort" : "QeD23uC8wixYTZ_to5c89$$diWVcVbwuqoaHEe6Ojiac"
       }, {
-        "id" : "Q1nsNfmTFB-oZEeauPrUl",
+        "id" : "pz6ZXO-e1eqVYEXMWyeH0",
         "source" : "ijP-AI7o0asM_ss70X5IP$$EI8o_xxiGQ9AL_vgyQZHT",
         "sourcePort" : "5aAZFmF8E-INCsFuFfWAN$$RKGFfifgm7ho_meTzNdKV",
         "target" : "pHiX4xWnPMs1Gkvi0bcOZ$$vY6kILmhf4xyErcFe580U",
         "targetPort" : "5wlEJ9rrYtAyxVH01SOG3$$dAO1UqB48NR8C-pz7oRGc"
       }, {
-        "id" : "YVgMnR2xNHmv0n8zOrNFN",
+        "id" : "dG2eEJ_Y_XI12qTB-EUB_",
         "source" : "pHiX4xWnPMs1Gkvi0bcOZ$$vY6kILmhf4xyErcFe580U",
         "sourcePort" : "F8xnFhuYYiJWcTag98pr2$$poAPRAotbhzl8rourOznM",
         "target" : "YsLv9M_vzkBBbsxYJUCUV$$0i68A3bN9Gtvv0r2dE5V5",
         "targetPort" : "DltODBRTEWjBdDbNIpVxy$$lYuG14WRBJHfno94x5BAy"
       }, {
-        "id" : "Qc4Z_zsWNJKjSR8u2UqDs",
+        "id" : "2Fjgb3zEShaEnsJKxETsy",
         "source" : "YsLv9M_vzkBBbsxYJUCUV$$0i68A3bN9Gtvv0r2dE5V5",
         "sourcePort" : "BzetactkhDOfMOg2gSh6w$$K9F4-aOVjWRRZ12Wnsvul",
         "target" : "Dj6oja_WmBTXMN3AJOvSx$$0mA_YiEBf-SCqQM6rEWsW",
         "targetPort" : "CqUNgShTLlIP_9rGWdQw5$$wHHgNENFY-EqMijXshxKd"
       }, {
-        "id" : "pc5jjLXZEF5ozs_-LoHct",
+        "id" : "_p7ZQCPUpfkvzUPFhYAPy",
         "source" : "YsLv9M_vzkBBbsxYJUCUV$$0i68A3bN9Gtvv0r2dE5V5",
         "sourcePort" : "3tTwgv9x04B4cnmRTuIvR$$vNhwHvIU0yNpekGKONEGb",
         "target" : "BO3hrv5tZ8LxoTOjZ6Ajv$$Rx8F8to63snLcZo1r-TcD",
         "targetPort" : "gJ4OqobFeoe-4rQkQYgsz$$1kTwf3XaDHlc-CW1ED_YR"
       }, {
-        "id" : "5iCNX4Ef6AwebEUVoC5ez",
+        "id" : "WFc1WT9QZFuMl-aRDzVkf",
         "source" : "YsLv9M_vzkBBbsxYJUCUV$$0i68A3bN9Gtvv0r2dE5V5",
         "sourcePort" : "1Uz_9EH85JsTgAYbj-mkd$$_UWeRxDU5NA9MbroW6QWn",
         "target" : "_wPo8nbcxQjMT-oUP80vb$$3sothnjdSJJGA2k2GZ9ML",
         "targetPort" : "QfE6jzKSeJ2e8ieA7Cp7D$$V_MAmZrvy_yquiTr975i1"
       }, {
-        "id" : "erCckECC4O_97kDx9Uc3d",
+        "id" : "49rRrafSXl9B9zVlfg4Hq",
         "source" : "Dj6oja_WmBTXMN3AJOvSx$$0mA_YiEBf-SCqQM6rEWsW",
         "sourcePort" : "wTsreSYOqpBYFlyOlD0Co$$0P9CdDwiDRkPtv6E8hhGN",
         "target" : "_wPo8nbcxQjMT-oUP80vb$$3sothnjdSJJGA2k2GZ9ML",
         "targetPort" : "t2NliMEf8MbMxm93AW1-f$$l6wQGV8z3i8zE6P9nrUIR"
       }, {
-        "id" : "I-IRCVbGv00pDVX3UNG8g",
+        "id" : "5tJpi7k13tpsj3Lhvh8rS",
         "source" : "BO3hrv5tZ8LxoTOjZ6Ajv$$Rx8F8to63snLcZo1r-TcD",
         "sourcePort" : "Id2XhH-cygg4tUCsh-uJI$$FhC3FDuyBN8jkjq-_9pui",
         "target" : "_wPo8nbcxQjMT-oUP80vb$$3sothnjdSJJGA2k2GZ9ML",
         "targetPort" : "Ns16gtqhh32YXej-8Kn3q$$-zg9_PdDkq5EKBKIIA-bz"
       }, {
-        "id" : "_lRUxYpebrFKn3cnWc1II",
+        "id" : "bcRS95k7uB0mlSibO6CPe",
         "source" : "_wPo8nbcxQjMT-oUP80vb$$3sothnjdSJJGA2k2GZ9ML",
         "sourcePort" : "DolCO-f59RV5mwmX4Vapr$$8rUgTzljRHUAdXQiu07A5",
         "target" : "ULnjpJmU0yQOfWY7sIxk5$$usuji8Utxuk17HoA6f29M",
         "targetPort" : "obfkU4wZhOigLfWcLbrvN$$FvPwanEvAs7zHWrfTtf3W"
       }, {
-        "id" : "SifSrOCiHDCtV2VLzI_48",
+        "id" : "wGQ3PCGnQFCDUYbB3DGGa",
         "source" : "ULnjpJmU0yQOfWY7sIxk5$$usuji8Utxuk17HoA6f29M",
         "sourcePort" : "pLt1sEek6bBZM0u-uqkYC$$CNQ5G_gaFIdXo5iNXIbHQ",
         "target" : "h_oHj4RIiO0UOF_pBfL0t$$vKqa6XA72mF4tuLxoXoz6",
         "targetPort" : "oK7dNs66H-ZMxyQRyxvZp$$BXEkduHvvQObrNP-mh1Cu"
       }, {
-        "id" : "NZcHOnvykv9FtHIK_ljKG",
+        "id" : "2qG0XPV7LwkqmT69C1M1Q",
         "source" : "h_oHj4RIiO0UOF_pBfL0t$$vKqa6XA72mF4tuLxoXoz6",
         "sourcePort" : "GY___oXo-84TpUMer3Qrg$$tLjjCXwsc56waZ5TZBSwJ",
         "target" : "rfiq2Toc-drR8KWoi37Hm$$4pjBEEXicj4K91ciDa6BN",
@@ -203,7 +316,7 @@
           "metadata" : {
             "label" : "Deduplicate_1",
             "slug" : "Deduplicate_1",
-            "x" : 560.0005275352471,
+            "x" : 560,
             "y" : 160,
             "phase" : 0,
             "cache" : false,
@@ -279,12 +392,12 @@
               "colName" : "customer_id"
             } ],
             "dedupType" : "any",
-            "columnsSelector" : [ "QeD23uC8wixYTZ_to5c89$$diWVcVbwuqoaHEe6Ojiac##customer_id" ],
+            "columnsSelector" : [ "QeD23uC8wixYTZ_to5c89$$6A_G0Pm2OuE7uirWFWC40$$HodegYSXLfNKti5T2qBSe$$diWVcVbwuqoaHEe6Ojiac##customer_id" ],
             "orders" : [ ],
             "useOrderBy" : false
           },
           "componentInfo" : {
-            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.0.4&projectSubscriptionProjectId=12654&path=gems/Deduplicate",
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.25&projectSubscriptionProjectId=12654&path=gems/Deduplicate",
             "projectName" : "ProphecySparkBasicsPython"
           }
         },
@@ -294,7 +407,7 @@
           "metadata" : {
             "label" : "RowDistributor_1",
             "slug" : "RowDistributor_1",
-            "x" : 960.0005268311457,
+            "x" : 960,
             "y" : 160,
             "phase" : 0,
             "cache" : false,
@@ -383,21 +496,21 @@
           "properties" : {
             "outports" : [ {
               "path" : "out0",
-              "id" : "1Uz_9EH85JsTgAYbj-mkd$$_UWeRxDU5NA9MbroW6QWn",
+              "id" : "1Uz_9EH85JsTgAYbj-mkd$$ivONY2Vj0nIAKtuJ4bqfJ$$Wue-T77Wnx05IXLxIEPF2$$_UWeRxDU5NA9MbroW6QWn",
               "model" : {
                 "format" : "sql",
                 "expression" : "random_id = 0"
               }
             }, {
               "path" : "out1",
-              "id" : "BzetactkhDOfMOg2gSh6w$$K9F4-aOVjWRRZ12Wnsvul",
+              "id" : "BzetactkhDOfMOg2gSh6w$$RttrNIsxh6xWADtgggEFO$$Z9KdLnQ6lTLkFq3_Ca1vI$$K9F4-aOVjWRRZ12Wnsvul",
               "model" : {
                 "format" : "sql",
                 "expression" : "random_id = 1"
               }
             }, {
               "path" : "out2",
-              "id" : "3tTwgv9x04B4cnmRTuIvR$$vNhwHvIU0yNpekGKONEGb",
+              "id" : "3tTwgv9x04B4cnmRTuIvR$$d0xH67foInggGYHZKRwtl$$7GSNvAvAjU6gLcIPUL6Gs$$vNhwHvIU0yNpekGKONEGb",
               "model" : {
                 "format" : "sql",
                 "expression" : "random_id = 2"
@@ -406,7 +519,7 @@
             "distributeUnmatchedRows" : null
           },
           "componentInfo" : {
-            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.0.4&projectSubscriptionProjectId=12654&path=gems/RowDistributor",
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.25&projectSubscriptionProjectId=12654&path=gems/RowDistributor",
             "projectName" : "ProphecySparkBasicsPython"
           }
         },
@@ -416,7 +529,7 @@
           "metadata" : {
             "label" : "Deduplicate_2",
             "slug" : "Deduplicate_2",
-            "x" : 1760.00024880422,
+            "x" : 1760,
             "y" : 160,
             "phase" : 0,
             "cache" : false,
@@ -492,12 +605,12 @@
               "colName" : "customer_id"
             } ],
             "dedupType" : "any",
-            "columnsSelector" : [ "oK7dNs66H-ZMxyQRyxvZp$$BXEkduHvvQObrNP-mh1Cu##customer_id" ],
+            "columnsSelector" : [ "oK7dNs66H-ZMxyQRyxvZp$$Mi3YUxI8UYGm53qvuwD0K$$IGPVqvX9Q0NFh7RBwpQLd$$BXEkduHvvQObrNP-mh1Cu##customer_id" ],
             "orders" : [ ],
             "useOrderBy" : false
           },
           "componentInfo" : {
-            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.0.4&projectSubscriptionProjectId=12654&path=gems/Deduplicate",
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.25&projectSubscriptionProjectId=12654&path=gems/Deduplicate",
             "projectName" : "ProphecySparkBasicsPython"
           }
         },
@@ -615,10 +728,10 @@
               }
             } ],
             "activeTab" : "transformations",
-            "columnsSelector" : [ "gJ4OqobFeoe-4rQkQYgsz$$1kTwf3XaDHlc-CW1ED_YR##customer_name" ]
+            "columnsSelector" : [ "gJ4OqobFeoe-4rQkQYgsz$$ihMyoyZzeHQXxkGcSrznk$$Lpk2hya0BRQllq_p5q0QN$$1kTwf3XaDHlc-CW1ED_YR##customer_name" ]
           },
           "componentInfo" : {
-            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.0.4&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.25&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
             "projectName" : "ProphecySparkBasicsPython"
           }
         },
@@ -628,7 +741,7 @@
           "metadata" : {
             "label" : "customers_raw",
             "slug" : "customers_raw",
-            "x" : 160.00096079878793,
+            "x" : 160,
             "y" : 160,
             "phase" : 0,
             "cache" : false,
@@ -656,7 +769,7 @@
           "metadata" : {
             "label" : "DropRandomId",
             "slug" : "DropRandomId",
-            "x" : 1560.0007206304692,
+            "x" : 1560,
             "y" : 160,
             "phase" : 0,
             "cache" : false,
@@ -740,6 +853,13 @@
             "importLanguage" : "sql",
             "importString" : "",
             "transformations" : [ {
+              "AddRule" : {
+                "expression" : {
+                  "expression" : "",
+                  "format" : "python"
+                },
+                "param_errors" : [ ]
+              },
               "MissingColumn" : {
                 "sourceColumn" : "",
                 "defaultValue" : {
@@ -764,10 +884,10 @@
               }
             } ],
             "activeTab" : "transformations",
-            "columnsSelector" : [ "obfkU4wZhOigLfWcLbrvN$$FvPwanEvAs7zHWrfTtf3W##random_id" ]
+            "columnsSelector" : [ "obfkU4wZhOigLfWcLbrvN$$U-M1TxuCiKwuX5u3IuG_t$$Y6T7XnbBN9DJKiTM--xC4$$FvPwanEvAs7zHWrfTtf3W##random_id" ]
           },
           "componentInfo" : {
-            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.0.4&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.25&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
             "projectName" : "ProphecySparkBasicsPython"
           }
         },
@@ -777,7 +897,7 @@
           "metadata" : {
             "label" : "SetOperation_1",
             "slug" : "SetOperation_1",
-            "x" : 1360.0005856762066,
+            "x" : 1360,
             "y" : 160,
             "phase" : 0,
             "cache" : false,
@@ -986,7 +1106,7 @@
             "allowMissingColumns" : false
           },
           "componentInfo" : {
-            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.0.4&projectSubscriptionProjectId=12654&path=gems/SetOperation",
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.25&projectSubscriptionProjectId=12654&path=gems/SetOperation",
             "projectName" : "ProphecySparkBasicsPython"
           }
         },
@@ -996,7 +1116,7 @@
           "metadata" : {
             "label" : "SelectFields",
             "slug" : "SelectFields",
-            "x" : 360.0000867557395,
+            "x" : 360,
             "y" : 160,
             "phase" : 0,
             "cache" : false,
@@ -1233,10 +1353,10 @@
             } ],
             "importString" : "",
             "activeTab" : "expressions",
-            "columnsSelector" : [ "mM7ir_D0scKCAg_eQl4Ru$$DJ1UeHrUnGYtXUuCGmbPF##state", "mM7ir_D0scKCAg_eQl4Ru$$DJ1UeHrUnGYtXUuCGmbPF##customer_name", "mM7ir_D0scKCAg_eQl4Ru$$DJ1UeHrUnGYtXUuCGmbPF##tax_id", "mM7ir_D0scKCAg_eQl4Ru$$DJ1UeHrUnGYtXUuCGmbPF##tax_code", "mM7ir_D0scKCAg_eQl4Ru$$DJ1UeHrUnGYtXUuCGmbPF##customer_id" ]
+            "columnsSelector" : [ "mM7ir_D0scKCAg_eQl4Ru$$U6B7Bu6gjySqNe1yPWyu5$$DJ1UeHrUnGYtXUuCGmbPF##customer_name", "mM7ir_D0scKCAg_eQl4Ru$$U6B7Bu6gjySqNe1yPWyu5$$DJ1UeHrUnGYtXUuCGmbPF##state", "mM7ir_D0scKCAg_eQl4Ru$$U6B7Bu6gjySqNe1yPWyu5$$DJ1UeHrUnGYtXUuCGmbPF##tax_id", "mM7ir_D0scKCAg_eQl4Ru$$U6B7Bu6gjySqNe1yPWyu5$$DJ1UeHrUnGYtXUuCGmbPF##customer_id", "mM7ir_D0scKCAg_eQl4Ru$$U6B7Bu6gjySqNe1yPWyu5$$DJ1UeHrUnGYtXUuCGmbPF##tax_code" ]
           },
           "componentInfo" : {
-            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.0.4&projectSubscriptionProjectId=12654&path=gems/Reformat",
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.25&projectSubscriptionProjectId=12654&path=gems/Reformat",
             "projectName" : "ProphecySparkBasicsPython"
           }
         },
@@ -1354,10 +1474,10 @@
               }
             } ],
             "activeTab" : "transformations",
-            "columnsSelector" : [ "CqUNgShTLlIP_9rGWdQw5$$wHHgNENFY-EqMijXshxKd##customer_id" ]
+            "columnsSelector" : [ "CqUNgShTLlIP_9rGWdQw5$$fBOJi6s_1seFKJsTjiu0A$$fO8Uo2wMq7PMbs42JIKkv$$wHHgNENFY-EqMijXshxKd##customer_id" ]
           },
           "componentInfo" : {
-            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.0.4&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.25&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
             "projectName" : "ProphecySparkBasicsPython"
           }
         },
@@ -1367,7 +1487,7 @@
           "metadata" : {
             "label" : "SchemaTransform_1",
             "slug" : "SchemaTransform_1",
-            "x" : 760.0009651870012,
+            "x" : 760,
             "y" : 160,
             "phase" : 0,
             "cache" : false,
@@ -1442,6 +1562,13 @@
             "importLanguage" : "sql",
             "importString" : "",
             "transformations" : [ {
+              "AddRule" : {
+                "expression" : {
+                  "expression" : "",
+                  "format" : "python"
+                },
+                "param_errors" : [ ]
+              },
               "MissingColumn" : {
                 "sourceColumn" : "",
                 "defaultValue" : {
@@ -1469,116 +1596,10 @@
             "columnsSelector" : [ ]
           },
           "componentInfo" : {
-            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.0.4&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.25&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
             "projectName" : "ProphecySparkBasicsPython"
           }
         }
-      },
-      "externalDependencies" : [ ]
-    },
-    "ACmhiB-j61JCA3Q9gMuh4$$du7pz7z5cl_DGkSjZk8Xl" : {
-      "id" : "ACmhiB-j61JCA3Q9gMuh4$$du7pz7z5cl_DGkSjZk8Xl",
-      "component" : "Target",
-      "metadata" : {
-        "label" : "customers_scd1_write",
-        "slug" : "customers_scd1_write",
-        "x" : -20,
-        "y" : 80,
-        "phase" : 0,
-        "cache" : false,
-        "detailedStats" : false,
-        "isImported" : false,
-        "comment" : "This gem implements a Slowly Changing Dimension Type 1 (SCD1) merge operation on customer data. It checks if the target table exists and merges the source data with the target data based on the customer_id identifier. If a match is found, it updates all columns in the target table with the corresponding values from the source table. If no match is found, it inserts all columns from the source table into the target table. If the target table does not exist, it creates it and writes the source data to it in Delta format."
-      },
-      "ports" : {
-        "inputs" : [ {
-          "id" : "VWmm7fGhC8jbSA8elTiO6$$438malNFsrwzk5OR6gtJ_",
-          "slug" : "in0",
-          "schema" : {
-            "type" : "struct",
-            "fields" : [ {
-              "name" : "customer_id",
-              "type" : "integer",
-              "nullable" : true,
-              "metadata" : {
-                "description" : "",
-                "mappings" : [ ],
-                "tags" : [ ]
-              }
-            }, {
-              "name" : "tax_id",
-              "type" : "double",
-              "nullable" : true,
-              "metadata" : {
-                "description" : "",
-                "mappings" : [ ],
-                "tags" : [ ]
-              }
-            }, {
-              "name" : "tax_code",
-              "type" : "string",
-              "nullable" : true,
-              "metadata" : {
-                "description" : "",
-                "mappings" : [ ],
-                "tags" : [ ]
-              }
-            }, {
-              "name" : "customer_name",
-              "type" : "string",
-              "nullable" : true,
-              "metadata" : {
-                "description" : "",
-                "mappings" : [ ],
-                "tags" : [ ]
-              }
-            }, {
-              "name" : "state",
-              "type" : "string",
-              "nullable" : true,
-              "metadata" : {
-                "description" : "",
-                "mappings" : [ ],
-                "tags" : [ ]
-              }
-            } ]
-          },
-          "isStreaming" : false
-        } ],
-        "outputs" : [ ],
-        "selectedInputFields" : [ ],
-        "isCustomOutputSchema" : false,
-        "autoUpdateOnRun" : false
-      },
-      "properties" : {
-        "datasetId" : "datasets/customers_scd1"
-      }
-    },
-    "em0T9keT26dk48_ZlWcKU$$HZCAtePwot9twQNiPgo39" : {
-      "id" : "em0T9keT26dk48_ZlWcKU$$HZCAtePwot9twQNiPgo39",
-      "component" : "Source",
-      "metadata" : {
-        "label" : "customers_scd1_read",
-        "slug" : "customers_scd1_read",
-        "x" : -220,
-        "y" : 260,
-        "phase" : 1,
-        "cache" : false,
-        "detailedStats" : false,
-        "isImported" : false
-      },
-      "ports" : {
-        "inputs" : [ ],
-        "outputs" : [ {
-          "id" : "xoG7A8-Ko-Xwppnh3No9j$$saKSItulVD6wlA4alQbVl",
-          "slug" : "out"
-        } ],
-        "selectedInputFields" : [ ],
-        "isCustomOutputSchema" : false,
-        "autoUpdateOnRun" : false
-      },
-      "properties" : {
-        "datasetId" : "datasets/customers_scd1"
       }
     }
   },

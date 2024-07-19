@@ -7,20 +7,22 @@ from scdpython.config.ConfigStore import *
 from scdpython.udfs.UDFs import *
 
 def customers_scd1_write(spark: SparkSession, in0: DataFrame):
-    from delta.tables import DeltaTable, DeltaMergeBuilder
+    from pyspark.sql.utils import AnalysisException
 
-    if (
-        DeltaTable.isDeltaTable(spark, "dbfs:/tmp/ntong/python_sample/customers_scd1")
-        and spark._jvm.org.apache.hadoop.fs.FileSystem\
-          .get(spark._jsc.hadoopConfiguration())\
-          .exists(spark._jvm.org.apache.hadoop.fs.Path("dbfs:/tmp/ntong/python_sample/customers_scd1"))
-    ):
+    try:
+        desc_table = spark.sql("describe formatted `dev`.`default`.`customes_scd1`")
+        table_exists = True
+    except AnalysisException as e:
+        table_exists = False
+
+    if table_exists:
+        from delta.tables import DeltaTable, DeltaMergeBuilder
         DeltaTable\
-            .forPath(spark, "dbfs:/tmp/ntong/python_sample/customers_scd1")\
+            .forName(spark, "`dev`.`default`.`customes_scd1`")\
             .alias("target")\
             .merge(in0.alias("source"), (col("source.customer_id") == col("target.customer_id")))\
             .whenMatchedUpdateAll()\
             .whenNotMatchedInsertAll()\
             .execute()
     else:
-        in0.write.format("delta").mode("overwrite").save("dbfs:/tmp/ntong/python_sample/customers_scd1")
+        in0.write.format("delta").mode("overwrite").saveAsTable("`dev`.`default`.`customes_scd1`")

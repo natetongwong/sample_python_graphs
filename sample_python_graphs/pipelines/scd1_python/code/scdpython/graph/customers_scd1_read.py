@@ -7,4 +7,4 @@ from scdpython.config.ConfigStore import *
 from scdpython.udfs.UDFs import *
 
 def customers_scd1_read(spark: SparkSession) -> DataFrame:
-    return spark.read.format("delta").load("dbfs:/tmp/ntong/python_sample/customers_scd1")
+    return spark.read.table("`dev`.`default`.`customes_scd1`")

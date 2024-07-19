@@ -6,3 +6,5 @@ configurations:
 - Remove
 - dev
 - default
+pipelineVersion:
+  version: '2'

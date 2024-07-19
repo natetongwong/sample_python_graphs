@@ -7,4 +7,4 @@ from .config import *
 from scdpython.udfs.UDFs import *
 
 def SchemaTransform_3(spark: SparkSession, in0: DataFrame) -> DataFrame:
-    return in0.withColumn("customer_name", expr("if((rand() > 0.5D), upper(customer_name), lower(customer_name))"))
+    return in0.withColumn("customer_name", expr("if((rand() > 0.5BD), upper(customer_name), lower(customer_name))"))
