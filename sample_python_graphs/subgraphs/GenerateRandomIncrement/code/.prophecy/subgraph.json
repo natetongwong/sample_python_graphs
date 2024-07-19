@@ -33,8 +33,7 @@
           "isReferenced" : false
         } ]
       }
-    },
-    "comment" : "This pipeline graph generates random increments to customer data by selecting specific fields, removing duplicates, and transforming the schema. It then distributes the data into three separate dataframes, applies additional schema transformations, and performs a set operation to combine the dataframes. Finally, it removes a random ID column and drops any remaining duplicates to produce a clean and enriched customer dataset."
+    }
   },
   "ports" : {
     "inputs" : [ ],
