@@ -1,20 +1,159 @@
 {
   "metainfo" : {
     "migrationVersions" : {
-      "gemBuilderVersion" : "v1"
+      "gemBuilderVersion" : "v1",
+      "unitTestNullDataMigrated" : true
     },
     "functions" : { },
     "codeGenConfiguration" : {
       "editableConfig" : false,
       "plibVersion" : {
-        "mavenVersion" : "8.0.25",
-        "pyPiVersion" : "1.9.9"
+        "mavenVersion" : "8.7.1",
+        "pyPiVersion" : "1.9.29"
       }
     },
     "id" : "1",
     "uri" : "pipelines/scd2_merge",
+    "sourceSuggestions" : [ {
+      "sourceLabel" : "customers_raw",
+      "sourceDatasetId" : "datasets/customers_raw",
+      "canJoinWith" : [ {
+        "processLabel" : "customers_scd2_1",
+        "processId" : "9XjAxmG-tenTqDZUHxRop$$ssKU10KT6YSCu9KXJ_IOn",
+        "joinColumns" : [ "customer_id", "tax_id", "tax_code" ],
+        "isRecommended" : true,
+        "properties" : {
+          "columnsSelector" : [ "customer_id", "tax_id", "tax_code" ],
+          "conditions" : [ {
+            "alias" : "customers_raw",
+            "expression" : "(((customers_scd2_1.customer_id = customers_raw.customer_id) AND (customers_scd2_1.tax_code = customers_raw.tax_code)) AND (customers_scd2_1.tax_id = customers_raw.tax_id))",
+            "joinType" : "inner"
+          } ],
+          "expressions" : [ {
+            "alias" : "city",
+            "expression" : "customers_raw.city"
+          }, {
+            "alias" : "postcode",
+            "expression" : "customers_raw.postcode"
+          }, {
+            "alias" : "street",
+            "expression" : "customers_raw.street"
+          }, {
+            "alias" : "number",
+            "expression" : "customers_raw.number"
+          }, {
+            "alias" : "unit",
+            "expression" : "customers_raw.unit"
+          }, {
+            "alias" : "region",
+            "expression" : "customers_raw.region"
+          }, {
+            "alias" : "district",
+            "expression" : "customers_raw.district"
+          }, {
+            "alias" : "lon",
+            "expression" : "customers_raw.lon"
+          }, {
+            "alias" : "lat",
+            "expression" : "customers_raw.lat"
+          }, {
+            "alias" : "ship_to_address",
+            "expression" : "customers_raw.ship_to_address"
+          }, {
+            "alias" : "valid_from",
+            "expression" : "customers_raw.valid_from"
+          }, {
+            "alias" : "valid_to",
+            "expression" : "customers_raw.valid_to"
+          }, {
+            "alias" : "units_purchased",
+            "expression" : "customers_raw.units_purchased"
+          }, {
+            "alias" : "loyalty_segment",
+            "expression" : "customers_raw.loyalty_segment"
+          }, {
+            "alias" : "is_current",
+            "expression" : "customers_scd2_1.is_current"
+          }, {
+            "alias" : "customer_name",
+            "expression" : "customers_scd2_1.customer_name"
+          }, {
+            "alias" : "state",
+            "expression" : "customers_scd2_1.state"
+          }, {
+            "alias" : "tax_code",
+            "expression" : "customers_scd2_1.tax_code"
+          }, {
+            "alias" : "is_old_value",
+            "expression" : "customers_scd2_1.is_old_value"
+          }, {
+            "alias" : "from_time",
+            "expression" : "customers_scd2_1.from_time"
+          }, {
+            "alias" : "customer_id",
+            "expression" : "customers_scd2_1.customer_id"
+          }, {
+            "alias" : "end_time",
+            "expression" : "customers_scd2_1.end_time"
+          }, {
+            "alias" : "tax_id",
+            "expression" : "customers_scd2_1.tax_id"
+          } ],
+          "headAlias" : "datasets/customers_raw"
+        }
+      } ]
+    }, {
+      "sourceLabel" : "customers_scd1",
+      "sourceDatasetId" : "datasets/customers_scd1",
+      "canJoinWith" : [ {
+        "processLabel" : "customers_scd2_1",
+        "processId" : "9XjAxmG-tenTqDZUHxRop$$ssKU10KT6YSCu9KXJ_IOn",
+        "joinColumns" : [ "customer_id", "tax_id", "tax_code" ],
+        "isRecommended" : true,
+        "properties" : {
+          "columnsSelector" : [ "customer_id", "tax_id", "tax_code" ],
+          "conditions" : [ {
+            "alias" : "customers_scd1",
+            "expression" : "(((customers_scd2_1.customer_id = customers_scd1.customer_id) AND (customers_scd2_1.tax_code = customers_scd1.tax_code)) AND (customers_scd2_1.tax_id = customers_scd1.tax_id))",
+            "joinType" : "inner"
+          } ],
+          "expressions" : [ {
+            "alias" : "is_current",
+            "expression" : "customers_scd2_1.is_current"
+          }, {
+            "alias" : "customer_name",
+            "expression" : "customers_scd2_1.customer_name"
+          }, {
+            "alias" : "state",
+            "expression" : "customers_scd2_1.state"
+          }, {
+            "alias" : "tax_code",
+            "expression" : "customers_scd2_1.tax_code"
+          }, {
+            "alias" : "is_old_value",
+            "expression" : "customers_scd2_1.is_old_value"
+          }, {
+            "alias" : "from_time",
+            "expression" : "customers_scd2_1.from_time"
+          }, {
+            "alias" : "customer_id",
+            "expression" : "customers_scd2_1.customer_id"
+          }, {
+            "alias" : "end_time",
+            "expression" : "customers_scd2_1.end_time"
+          }, {
+            "alias" : "tax_id",
+            "expression" : "customers_scd2_1.tax_id"
+          } ],
+          "headAlias" : "datasets/customers_scd1"
+        }
+      } ]
+    } ],
+    "pipelineSettingsInfo" : {
+      "isNullValuesInUnitTestsEnabled" : true
+    },
     "language" : "python",
-    "fabricId" : "14943",
+    "fabricId" : "14560",
     "frontEndLanguage" : "sql",
     "mode" : "batch",
     "udfs" : {
@@ -425,7 +564,7 @@
             "allowMissingColumns" : false
           },
           "componentInfo" : {
-            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.25&projectSubscriptionProjectId=12654&path=gems/SetOperation",
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.39&projectSubscriptionProjectId=12654&path=gems/SetOperation",
             "projectName" : "ProphecySparkBasicsPython"
           }
         },
@@ -544,7 +683,7 @@
             "useOrderBy" : false
           },
           "componentInfo" : {
-            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.25&projectSubscriptionProjectId=12654&path=gems/Deduplicate",
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.39&projectSubscriptionProjectId=12654&path=gems/Deduplicate",
             "projectName" : "ProphecySparkBasicsPython"
           }
         },
@@ -665,7 +804,7 @@
             "columnsSelector" : [ "CqUNgShTLlIP_9rGWdQw5$$fBOJi6s_1seFKJsTjiu0A$$fO8Uo2wMq7PMbs42JIKkv$$wHHgNENFY-EqMijXshxKd##customer_id" ]
           },
           "componentInfo" : {
-            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.25&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.39&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
             "projectName" : "ProphecySparkBasicsPython"
           }
         },
@@ -756,7 +895,7 @@
             "useOrderBy" : false
           },
           "componentInfo" : {
-            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.25&projectSubscriptionProjectId=12654&path=gems/Deduplicate",
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.39&projectSubscriptionProjectId=12654&path=gems/Deduplicate",
             "projectName" : "ProphecySparkBasicsPython"
           }
         },
@@ -884,7 +1023,7 @@
             "columnsSelector" : [ "obfkU4wZhOigLfWcLbrvN$$U-M1TxuCiKwuX5u3IuG_t$$Y6T7XnbBN9DJKiTM--xC4$$FvPwanEvAs7zHWrfTtf3W##random_id" ]
           },
           "componentInfo" : {
-            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.25&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.39&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
             "projectName" : "ProphecySparkBasicsPython"
           }
         },
@@ -1005,7 +1144,7 @@
             "columnsSelector" : [ "gJ4OqobFeoe-4rQkQYgsz$$ihMyoyZzeHQXxkGcSrznk$$Lpk2hya0BRQllq_p5q0QN$$1kTwf3XaDHlc-CW1ED_YR##customer_name" ]
           },
           "componentInfo" : {
-            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.25&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.39&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
             "projectName" : "ProphecySparkBasicsPython"
           }
         },
@@ -1127,7 +1266,7 @@
             "distributeUnmatchedRows" : null
           },
           "componentInfo" : {
-            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.25&projectSubscriptionProjectId=12654&path=gems/RowDistributor",
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.39&projectSubscriptionProjectId=12654&path=gems/RowDistributor",
             "projectName" : "ProphecySparkBasicsPython"
           }
         },
@@ -1246,7 +1385,7 @@
             "columnsSelector" : [ ]
           },
           "componentInfo" : {
-            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.25&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.39&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
             "projectName" : "ProphecySparkBasicsPython"
           }
         },
@@ -1496,7 +1635,7 @@
             "columnsSelector" : [ "mM7ir_D0scKCAg_eQl4Ru$$U6B7Bu6gjySqNe1yPWyu5$$DJ1UeHrUnGYtXUuCGmbPF##customer_name", "mM7ir_D0scKCAg_eQl4Ru$$U6B7Bu6gjySqNe1yPWyu5$$DJ1UeHrUnGYtXUuCGmbPF##state", "mM7ir_D0scKCAg_eQl4Ru$$U6B7Bu6gjySqNe1yPWyu5$$DJ1UeHrUnGYtXUuCGmbPF##tax_id", "mM7ir_D0scKCAg_eQl4Ru$$U6B7Bu6gjySqNe1yPWyu5$$DJ1UeHrUnGYtXUuCGmbPF##customer_id", "mM7ir_D0scKCAg_eQl4Ru$$U6B7Bu6gjySqNe1yPWyu5$$DJ1UeHrUnGYtXUuCGmbPF##tax_code" ]
           },
           "componentInfo" : {
-            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.25&projectSubscriptionProjectId=12654&path=gems/Reformat",
+            "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.39&projectSubscriptionProjectId=12654&path=gems/Reformat",
             "projectName" : "ProphecySparkBasicsPython"
           }
         }
@@ -1679,7 +1818,7 @@
         "columnsSelector" : [ ]
       },
       "componentInfo" : {
-        "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.25&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
+        "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12654.git&subPath=&tag=0.2.39&projectSubscriptionProjectId=12654&path=gems/SchemaTransform",
         "projectName" : "ProphecySparkBasicsPython"
       }
     },
